@@ -124,6 +124,7 @@ public class FeedFragment extends Fragment {
      * Uses the KuCardAdapter class for button functionality and loading data
      */
     public void UpdateKus(String sort) {
+        // use a lowercase name for this method
         ApiClient.getKukyApiClient(AuthHelper.getCreds(getContext()))
                 .getKus(sort, String.valueOf(getUserId()))
                 .subscribeOn(Schedulers.newThread())
@@ -154,6 +155,9 @@ public class FeedFragment extends Fragment {
      * @param mkuList List of haikus
      */
     public void checkForKus(ArrayList mkuList) {
+        /*
+        Again, it would be better to simply get the list from the adapter rather than take it as an input
+         */
         if (mkuList.isEmpty())
         {
             mKuRecyclerView.setVisibility(View.GONE);

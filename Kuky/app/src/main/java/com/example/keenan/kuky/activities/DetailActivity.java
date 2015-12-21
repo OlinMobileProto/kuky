@@ -191,6 +191,7 @@ public class DetailActivity extends AppCompatActivity {
                                @Override
                                public void onNext(KuDetailResponse kuDetailResponse) {
                                    mKu = kuDetailResponse.getKu();
+                                   // is upvoted, downvoted, etc. not sent by the server?
                                    mKu.setUpvoted(upvoted);
                                    mKu.setDownvoted(downvoted);
                                    mKu.setFavorited(favorited);
@@ -226,7 +227,9 @@ public class DetailActivity extends AppCompatActivity {
      * @param mCommentList ArrayList of the comments
      */
     public void checkForComments(ArrayList mCommentList) {
-
+        /* instead of passing the comment list in here, you can get the list from the adapter and check that.
+          That way, it eliminates the needed input for cleaner code & makes it so that you can call this function anytime without
+          needing to have a comment list handy */
         if (mCommentList.isEmpty())
         {
             mCommentRecyclerView.setVisibility(View.GONE);
@@ -332,6 +335,7 @@ public class DetailActivity extends AppCompatActivity {
 
         mKu.setFavorited(!mKu.getFavorited());
         if (userId > 0) {
+            // Could you make a wrapper around this? It seems long and unwieldy
             ApiClient.getKukyApiClient(AuthHelper.getCreds(getApplicationContext()))
                     .favoriteKu(new KuActionRequest(userId, kuId))
                     .subscribeOn(Schedulers.newThread())

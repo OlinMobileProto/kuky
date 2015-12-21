@@ -165,6 +165,7 @@ public class KuWriteActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        // again, probably remove this if you're going to do nothing with it
         if (id == R.id.action_settings) {
             return true;
         }

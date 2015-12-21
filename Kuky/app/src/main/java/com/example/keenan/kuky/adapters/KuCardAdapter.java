@@ -67,6 +67,7 @@ public class KuCardAdapter extends RecyclerView.Adapter<KuViewHolder>{
                 Ku ku = mDataset.get(pos);
                 Intent dIntent = new Intent(mContext, DetailActivity.class);
                 Log.d(TAG, ku.toString());
+                // nice job working with intents
                 dIntent.putExtra(DetailActivity.KU_ID, String.valueOf(ku.getId()));
                 dIntent.putExtra(DetailActivity.KU_UPVOTED, String.valueOf(ku.getUpvoted()));
                 dIntent.putExtra(DetailActivity.KU_DOWNVOTED, String.valueOf(ku.getDownvoted()));
@@ -113,6 +114,7 @@ public class KuCardAdapter extends RecyclerView.Adapter<KuViewHolder>{
             holder.vDownvote.setBackgroundResource(R.drawable.ic_arrow_drop_down_black_24dp);
         }
 
+        // again, you should write code that wraps around this functionality
         holder.vUpvote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

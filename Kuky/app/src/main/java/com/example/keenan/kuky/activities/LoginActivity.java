@@ -97,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onRegisterClicked(View view) {
         uname = username.getText().toString();
         pw = password.getText().toString();
+        // Do you want to show this even registration isn't successful? If not, move this
         Snackbar.make(view, "uname: " + uname + " | pw: " + pw, Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
         ApiClient.getKukyApiClient().register(new UserRequest(uname, pw))
@@ -180,6 +181,7 @@ public class LoginActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        // remove the settings button
         if (id == R.id.action_settings) {
             return true;
         }

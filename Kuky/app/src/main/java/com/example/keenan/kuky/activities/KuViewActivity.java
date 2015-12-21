@@ -91,6 +91,7 @@ public class KuViewActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            // you should probably remove the settings option if you're not going to do anything with it
             return true;
         }
 
@@ -103,6 +104,7 @@ public class KuViewActivity extends AppCompatActivity {
      */
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        // you should hard code these strings elsewhere, either in strings or as a static final variable
         adapter.addFrag(new FeedFragment(), "FEED");
         adapter.addFrag(new ProfileFragment(), "PROFILE");
         viewPager.setAdapter(adapter);

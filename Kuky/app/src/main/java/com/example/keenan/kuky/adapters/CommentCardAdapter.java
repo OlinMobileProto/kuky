@@ -31,6 +31,7 @@ public class CommentCardAdapter extends RecyclerView.Adapter<CommentViewHolder> 
     private int mku_id;
 
     public CommentCardAdapter(ArrayList<Comment> Comments, Context context, int kuId) {
+        // use lowercase name for comments
         mDataset = Comments;
         mContext = context;
         mku_id = kuId;
@@ -54,6 +55,7 @@ public class CommentCardAdapter extends RecyclerView.Adapter<CommentViewHolder> 
         final Comment mComment = mDataset.get(position);
 
         String content = mComment.getContent();
+        // when I comment, and then scroll real quick, it crashes on this next line
         int kudos = mComment.getKudos();
 
         holder.vCommentContent.setText(content);
@@ -94,6 +96,9 @@ public class CommentCardAdapter extends RecyclerView.Adapter<CommentViewHolder> 
         holder.vDownvote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /* it seems like this set of code exists in a few different places. Perhaps you could write
+                a class that wraps around this code so that it isn't duplicated in many places
+                */
                 int userId = getUserId();
                 int commentId = mComment.getId();
                 CommentActionRequest req = new CommentActionRequest(userId, mku_id, commentId);

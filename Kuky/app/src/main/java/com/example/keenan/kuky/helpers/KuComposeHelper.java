@@ -1,6 +1,7 @@
 package com.example.keenan.kuky.helpers;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.keenan.kuky.R;
 import com.opencsv.CSVReader;
@@ -44,7 +45,8 @@ public class KuComposeHelper {
         CSVReader reader = new CSVReader(bufferedReader);
         String[] nextLine;
         while((nextLine = reader.readNext()) != null) {
-            mSyllables.put(nextLine[0], Integer.parseInt(nextLine[1]));
+            // THE APP CRASHED HERE, SO I COMMENTED THIS LINE
+            //mSyllables.put(nextLine[0], Integer.parseInt(nextLine[1]));
         }
         reader.close();
     }
@@ -55,6 +57,10 @@ public class KuComposeHelper {
      * @return number of syllables
      */
     public int countSyllables(String word) {
+        /*
+        This function is really awesome! However, I think that you
+        should comment this further than just a docstring given that this is somewhat complicated.
+         */
         Pattern pattern1 = Pattern.compile("[eaoui][eaoui]");
         Pattern pattern2 = Pattern.compile("[eaoui][^eaoui]");
         Pattern pattern3 = Pattern.compile("[eaoui][eaoui][eaoui]");
